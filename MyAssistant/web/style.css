@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0e2136;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #00c3ff, #ff00cc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.box {
+    width: 260px;
+    height: 260px;
+    background: #142d4a;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+@property --deg {
+    syntax: '<angle>';
+    inherits: true;
+    initial-value: 0deg;
+}
+
+.box::before,
+.box::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: conic-gradient(
+        from var(--deg) at center,
+        #00c3ff,
+        #4d8f99,
+        #6300c6,
+        #00c3ff
+    );
+    border-radius: inherit;
+    z-index: -2;
+    padding: 8px;
+    animation: autoRotate 2.5s linear infinite;
+}
+
+.box::after {
+    filter: blur(18px);
+    opacity: 0.8;
+}
+
+@keyframes autoRotate {
+    to {
+        --deg: 360deg;
+    }
+}
+
+.inner-circle {
+    width: 180px;
+    height: 180px;
+    background: #0e2136;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    z-index: 1;
+    box-shadow: 0 0 20px rgba(0, 195, 255, 0.5);
+}
+
+#status {
+    margin: 20px 0;
+    font-size: 1.3rem;
+    min-height: 50px;
+}
+
+.response {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(20, 45, 74, 0.6);
+    border-radius: 15px;
+    min-height: 80px;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
